@@ -28,7 +28,8 @@ To run the AI Math Teacher locally, follow these steps:
    pip install -r requirements.txt
    ```
 
-3. Run the Streamlit app:
+3. Get your api-key [here](https://developers.generativeai.google/)
+4. Run the Streamlit app:
 
    ```bash
    streamlit run app.py
