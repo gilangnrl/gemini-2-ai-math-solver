@@ -33,17 +33,17 @@ if image_input is not None:
 with st.sidebar:
     if st.button('Generate'):
         formatted_prompt = """
-        system: You are a Math Solver that will try to answer math question. User will give you some math question between elementery school until college level. Answer the question step by step, give some explanation for each step. Try to explain clearly.
+        system: Answer the question with steps, give some explanation for each step. Explain clearly.
         """
         if question is not None and image_input is not None:
-            question = f"user question: {question}"
+            question = formatted_prompt + f"user question: {question}"
             response = model_multimodal.generate_content([question, img])
             final_response = response
         elif question is None or question == '':
             response = model_multimodal.generate_content(img)
             final_response = response
         else:
-            question = f"user question: {question}"
+            question = formatted_prompt + f"user question: {question}"
             response = model_text.generate_content(question)
             final_response = response
 st.write('Answer: ')
