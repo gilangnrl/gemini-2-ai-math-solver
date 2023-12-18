@@ -56,7 +56,7 @@ with st.sidebar:
     if st.button('Generate', key='button_submit', disabled=st.session_state.disabled):
         formatted_prompt = f"""
         
-        Answer and explain the math question in detail, give step by step, write the answer in {lang} language and also write with latext format like example: {latext}
+        Answer and explain the math question in detail, give step by step, write the answer in {lang} language, write with latext format without mention latext like example: {latext}
         """
         if question is not None and image_input is not None:
             question = f"user question: {question}" + formatted_prompt
