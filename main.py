@@ -1,9 +1,8 @@
 import streamlit as st
 import google.generativeai as genai
-from api_dev import api 
 from io import StringIO
 from PIL import Image
-# from api import api 
+from api import api
 
 # reusable function
 def show_img(img):
