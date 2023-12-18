@@ -1,6 +1,5 @@
 import streamlit as st
 import google.generativeai as genai
-from io import StringIO
 from PIL import Image
 from api import api
 
