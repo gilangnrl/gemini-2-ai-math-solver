@@ -2,19 +2,11 @@ import streamlit as st
 import google.generativeai as genai
 from PIL import Image
 from api import api 
-from IPython.display import display
-import textwrap
-
-#  reusable function
-def to_markdown(text):
-  text = text.replace('•', '  *')
-  return textwrap.indent(text, '> ', predicate=lambda _: True)
 
 def show_img(img):
     h, w = img.size[0], img.size[1]
     img = img.resize(((round(h-h/2), round(w-w/2))))
     st.image(img, f'caption: {filename}')
-
 
 latext = r'''
 ## Latex example
