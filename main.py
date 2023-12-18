@@ -38,8 +38,6 @@ with st.sidebar:
             'English', 
             'Indonesian', 
             'Japanese',
-            'Javanese',
-            'Sundanese',
             'France'
         )
     )
@@ -57,17 +55,18 @@ if image_input is not None:
 with st.sidebar:
     if st.button('Generate', key='button_submit', disabled=st.session_state.disabled):
         formatted_prompt = f"""
-        Answer and explain the given of math question solution in detail, give step by step, write the answer in {lang} language, write with latext format like example: {latext}
+        
+        Answer and explain the math question in detail, give step by step, write the answer in {lang} language and also write with latext format like example: {latext}
         """
         if question is not None and image_input is not None:
-            question = formatted_prompt + f"user question: {question}"
+            question = f"user question: {question}" + formatted_prompt
             response = model_multimodal.generate_content([question, img])
             final_response = response
         elif question is None or question == '':
             response = model_multimodal.generate_content([formatted_prompt, img])
             final_response = response
         else:
-            question = formatted_prompt + f"user question: {question}"
+            question = f"user question: {question}" + formatted_prompt
             response = model_text.generate_content(question)
             final_response = response
 st.write('Answer: ')
