@@ -1,9 +1,9 @@
 import streamlit as st
 import google.generativeai as genai
 from PIL import Image
-from api import api
+from api import api 
 
-# reusable function
+#  reusable function
 def show_img(img):
     h, w = img.size[0], img.size[1]
     img = img.resize(((round(h-h/2), round(w-w/2))))
@@ -33,14 +33,14 @@ if image_input is not None:
 with st.sidebar:
     if st.button('Generate'):
         formatted_prompt = """
-        system: You are a Math Solver that will try to answer math question. User will give you some math question between elementery school until college level. Answer the question step by step, give some explanation for each step. Try to explain clearly.
+        Answer the question step by step, give some explanation for each step, write the answer with markdown format
         """
         if question is not None and image_input is not None:
             question = formatted_prompt + f"user question: {question}"
             response = model_multimodal.generate_content([question, img])
             final_response = response
         elif question is None or question == '':
-            response = model_multimodal.generate_content(img)
+            response = model_multimodal.generate_content([formatted_prompt, img])
             final_response = response
         else:
             question = formatted_prompt + f"user question: {question}"
@@ -48,5 +48,5 @@ with st.sidebar:
             final_response = response
 st.write('Answer: ')
 if final_response != None:
-    st.write(final_response.text)
+    st.markdown(final_response.text)
 
