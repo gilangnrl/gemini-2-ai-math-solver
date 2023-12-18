@@ -36,14 +36,14 @@ with st.sidebar:
         system: You are a Math Solver that will try to answer math question. User will give you some math question between elementery school until college level. Answer the question step by step, give some explanation for each step. Try to explain clearly.
         """
         if question is not None and image_input is not None:
-            question = formatted_prompt + f"user question: {question}"
+            question = f"user question: {question}"
             response = model_multimodal.generate_content([question, img])
             final_response = response
         elif question is None or question == '':
             response = model_multimodal.generate_content(img)
             final_response = response
         else:
-            question = formatted_prompt + f"user question: {question}"
+            question = f"user question: {question}"
             response = model_text.generate_content(question)
             final_response = response
 st.write('Answer: ')
